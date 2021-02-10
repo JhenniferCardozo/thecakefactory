@@ -1,0 +1,53 @@
+﻿@*Created by Clara Magaldi - 30109313*@
+
+@model Recipe
+
+<tr>
+    <td colspan="2"><span class="errorMessage" asp-validation-for="@Model.Name"></span></td>
+</tr>
+<tr>
+    <td colspan="2"><span class="errorMessage" asp-validation-for="@Model.Preparation"></span></td>
+</tr>
+<tr>
+    <td colspan="2"><span class="errorMessage" asp-validation-for="@Model.Cook"></span></td>
+</tr>
+<tr>
+    <td colspan="2"><span class="errorMessage" asp-validation-for="@Model.Dificulty"></span></td>
+</tr>
+<tr>
+    <td colspan="2"><span class="errorMessage" asp-validation-for="@Model.Ingredients"></span></td>
+</tr>
+<tr>
+    <td colspan="2"><span class="errorMessage" asp-validation-for="@Model.Chef"></span></td>
+</tr>
+<tr>
+    <th><label>Name:</label></th>
+    <td><input asp-for="@Model.Name" /></td>
+</tr>
+<tr>
+    <th><label>Preparation time:</label></th>
+    <td><input asp-for="@Model.Preparation" /></td>
+</tr>
+<tr>
+    <th><label>Cook time:</label></th>
+    <td><input asp-for="@Model.Cook" /></td>
+</tr>
+<tr>
+    <th><label>Dificulty:</label></th>
+    <td>
+        <select asp-for="@Model.Dificulty">
+            <option value="empty"></option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <th><label>Ingredients:</label></th>
+    <td><input asp-for="@Model.Ingredients" /></td>
+</tr>
+<tr>
+    <th><label>Chef:</label></th>
+    <td><input asp-for="@Model.Chef" /></td>
+</tr>

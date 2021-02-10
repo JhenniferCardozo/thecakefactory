@@ -1,0 +1,23 @@
+﻿@*@model CookingStep
+@{
+	ViewBag.Title = "New Recipe";
+}
+
+<form asp-action="CreateCookingStep" asp-controller="Admin" method="post">
+	<input type="hidden" asp-for="RecipeId" />
+	<table>
+		<tr>
+			<th><label>StepNumber:</label></th>
+			<td><input asp-for="@Model.CookingStepNumber" /></td>
+		</tr>
+		<tr>
+			<th><label>Description:</label></th>
+			<td><input asp-for="@Model.Description" /></td>
+		</tr>
+	</table>
+	<div>
+		<button type="submit" class="btn btn-warning  active mybutton">Save</button> 
+		<button class="  btn btn-warning  active" asp-action="CookingStepList" asp-controller="Home">Cancel</button>
+
+	</div>
+</form>*@

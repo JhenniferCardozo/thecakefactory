@@ -1,0 +1,57 @@
+﻿@model HomeRecipeDetailsViewModel
+
+@{
+    ViewBag.Title = "View recipe";
+}
+
+    <div class="view">
+        <div style="text-align:center">
+            <a class="fakeButton" asp-controller="Admin" asp-action="EditRecipe" asp-route-rId="@Model.Recipe.RecipeId"><strong>Update</strong></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="fakeButton" asp-controller="Admin" asp-action="DeleteRecipe" asp-route-rId="@Model.Recipe.RecipeId"><strong>Delete Recipe</strong></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="fakeButton" asp-controller="Home" asp-action="RecipeList"><strong>Back to List</strong></a>
+        </div>
+
+        <table class="view">
+            <tr>
+                <th colspan="2" class="title" style="padding-top: 50px">@Model.Recipe.Name</th>
+            </tr>
+            <tr>
+                <td colspan="2" class="subtitle">@Model.Recipe.Stars stars</td>
+            </tr>
+            <tr>
+                <td class="paddingTop"><strong>PREP:</strong> @Model.Recipe.Preparation MINS</td>
+                <td class="paddingTop"><strong>CHEF:</strong> @Model.Recipe.Chef</td>
+            </tr>
+            <tr>
+                <td><strong>COOK:</strong> @Model.Recipe.Cook MINS</td>
+                <td><strong>Dificulty:</strong> @Model.Recipe.Dificulty</td>
+            </tr>
+            <tr>
+                <td class="paddingTop">
+                    <strong>INGREDIENTS:</strong>
+                    @if (Model.Recipe.Ingredients != null && Model.Recipe.Ingredients.Contains(';'))
+                    {
+                        var ingredients1 = Model.Recipe.Ingredients.ToString();
+                        var ingredients2 = ingredients1.Split(';');
+                        foreach (var ingr in ingredients2)
+                        {
+                            <p>@ingr</p>
+                        }
+                    }
+                    else
+                    {
+                        <p>@Model.Recipe.Ingredients</p>
+                    }
+                </td>
+                <td class="paddingTop">
+                    <strong>METHOD:</strong>
+                    @foreach (var desc in @Model.ListOfCookingSteps)
+                    {
+                        <p>@desc.CookingStepNumber) @desc.Description</p>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>

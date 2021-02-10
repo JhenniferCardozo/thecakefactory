@@ -1,0 +1,39 @@
+﻿@*Created by Clara Magaldi - 30109313*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,700|Vidaloka" rel="stylesheet">
+    @*Client-side validation*@
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+<body>
+    <nav>
+		<ul>
+			<li><a asp-controller="Home" asp-action="Index">&nbsp;&nbsp;Home&nbsp;&nbsp;</a></li>
+			<li><a asp-controller="Home" asp-action="RecipeList">&nbsp;&nbsp;Recipe List&nbsp;&nbsp;</a></li>
+			<li><a asp-controller="Admin" asp-action="AddRecipe">&nbsp;&nbsp;Add Recipe&nbsp;&nbsp;</a></li>
+			@if (User.Identity.IsAuthenticated)
+			{
+				<li><a asp-controller="Account" asp-action="Logout">&nbsp;&nbsp;Log out&nbsp;&nbsp;</a></li>
+
+			}
+
+		</ul>
+    </nav>
+    <div class="allPage">
+        @if (TempData["message"] != null)
+        {
+            <div class="warning">@TempData["message"]</div> <br />
+        }
+        @RenderBody()
+    </div>
+</body>
+</html>

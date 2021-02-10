@@ -1,0 +1,29 @@
+﻿@*Created by Clara Magaldi - 30109313*@
+
+@model IEnumerable<Recipe>
+
+@{
+    ViewBag.Title = "Recipe list";
+}
+
+<div class="list">
+    <table class="list">
+        <tr>
+            <td><strong>Name</strong></td>
+            <td><strong>Take a look</strong></td>
+            <td><strong>Add a review</strong></td>
+            <td><strong>Update</strong></td>
+            <td><strong>Delete</strong></td>
+        </tr>
+        @foreach (Recipe r in Model)
+        {
+    <tr class="list">
+        <td>@r.Name</td>
+        <td style="text-align: center;"><a asp-controller="Home" asp-action="ViewRecipe" asp-route-rId="@r.RecipeId"><img src="~/images/eyes.png" alt="eyes" style="width:30px; height: 30px"></a></td>
+        <td style="text-align: center;"><a asp-controller="Home" asp-action="ReviewRecipe" asp-route-rId="@r.RecipeId"><img src="~/images/star.png" alt="star" style="width: 24px; height: 24px"></a></td>
+        <td style="text-align: center;"><a asp-controller="Admin" asp-action="EditRecipe" asp-route-rId="@r.RecipeId"><img src="~/images/edit.png" alt="star" style="width: 24px; height: 24px"></a></td>
+        <td style="text-align: center;"><a asp-controller="Admin" asp-action="DeleteRecipe" asp-route-rId="@r.RecipeId"><img src="~/images/trashbin.png" alt="star" style="width: 24px; height: 24px"></a></td>
+    </tr>
+        }
+    </table>
+</div>

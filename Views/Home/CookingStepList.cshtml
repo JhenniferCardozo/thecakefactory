@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CookingStep>
+
+@{
+    ViewBag.Title = "Recipe list";
+}
+
+    <h1 style="text-align:center">@Model.FirstOrDefault().RecipeName</h1>
+    <div class="list">
+        <table class="list">
+            <tr>
+                <td><strong>Step</strong></td>
+                <td><strong>Description</strong></td>
+                <td><strong>Update</strong></td>
+                <td><strong>Delete</strong></td>
+            </tr>
+            @foreach (CookingStep c in Model)
+            {
+                <tr class="list">
+                    <td>@c.CookingStepNumber</td>
+                    <td>@c.Description</td>
+                    <td style="text-align: center;"><a asp-controller="Admin" asp-action="EditCookingStep" asp-route-csId="@c.CookingStepId"><img src="~/images/edit.png" alt="star" style="width: 24px; height: 24px"></a></td>
+                    <td style="text-align: center;"><a asp-controller="Admin" asp-action="DeleteCookingStep" asp-route-csId="@c.CookingStepId"><img src="~/images/trashbin.png" alt="star" style="width: 24px; height: 24px" ></a></td>
+                </tr>
+                
+            }
+        </table>
+        <div style="text-align:center">
+            <p class="marginTop"></p>
+            <a class="fakeButton" asp-controller="Admin" asp-action="AddCookingStep" asp-route-rId="@Model.FirstOrDefault().RecipeId"><strong>Add new cooking step</strong></a>
+            <p class="marginTop"></p>
+        </div>
+    </div>

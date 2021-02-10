@@ -1,0 +1,31 @@
+﻿@model Recipe
+
+@{
+    ViewBag.Title = "Edit recipe";
+}
+
+<div class="add">
+    <form asp-controller ="Admin" asp-action="EditRecipe" method="post">
+        <input type="hidden" asp-for="RecipeId" />
+        <fieldset>
+            @if (@Model.Name != null) {
+                <legend>@Model.Name</legend>
+            }
+            else {
+                <p>You need to save your recipe before adding cooking steps.</p>
+                <legend>New Recipe</legend>
+            }
+            <table class="add">
+                @await Html.PartialAsync("RecipeInputs")
+            </table>
+        </fieldset>
+        <div class="marginTop">
+            <button type="submit">Save</button>
+            <a class="a_button" asp-controller="Home" asp-action="RecipeList">Cancel</a>
+            @if (@Model.Name != null)
+            {
+                <a class="a_button" asp-controller="Home" asp-action="CookingStepList" asp-route-rId="@Model.RecipeId">Cooking Steps</a>
+            }
+        </div>
+    </form>
+</div>
